@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  /* background: linear-gradient(rgb(205, 242, 150), rgb(246, 89, 89));
+  background-repeat: no-repeat;
+  background-size: cover; */
+  font-family: sans-serif;
+}
+main {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+h1 {
+  font-size: xx-large;
+}
+.socre_p {
+  font-size: 2rem;
+}
+.option_div {
+  display: flex;
+  gap: 1rem;
+}
+.option {
+  background-color: gray;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+.btn {
+  width: 7rem;
+  height: 3rem;
+  /* padding: 1rem 2rem; */
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 2rem;
+}
+.start {
+  background-color: greenyellow;
+}
+.btn.stop {
+  background-color: red;
+}
+.active {
+  background-color: red;
+}
