@@ -17,18 +17,23 @@
 // rounds
 
 const btn = document.querySelector('#btn')
+const btnText = document.querySelector('#btnText')
 const option = document.querySelectorAll('.option')
 const scoreSpan = document.querySelector('#scoreUpdate')
 
 // GLOBAL variables
 
-let lastNum = 0 //global veriable for randGenerator
-let id = 0 //global veriable for game generated id
-let score = 0
-let miss = 0;
-let scoreUpdate = true
-const t = 3000
-const play = true
+let lastNum = 0            //global veriable for randGenerator
+let id = 0                //global veriable for game generated id
+let score = 0            //global, total score by user
+let miss = 0           // global, total miss by user 
+let scoreUpdate = true  //global, check only one click is registered for correct answer 
+let speed = 3000        // initial interval, reduce in per cycle
+let timeClear          // global, reference to clear setTimeout() 
+let intervalClear      // global, reference to clear setInterval()
+let play = false
+
+
 
 
 //random number generator
@@ -44,60 +49,111 @@ function randGenerator () {
 function gameInput () {
   id = randGenerator()
   addActive(id)
+  play = true
 }
+
+// adding and removing active class to game generated choose
 function addActive (id) {
   document.querySelector(`#op${id}`).classList.add('active')
 }
 function removeActive (id) {
-  document.querySelector(`#op${id}`).classList.remove('active')
+  const eli = document.querySelector(`#op${id}`)
+  if (eli.classList.contains('active')) {
+    eli.classList.remove('active')
+  }
 }
+
+// adding and removing correct class to user choose
 function addCorrect (id) {
-  document.querySelector(`#op${id}`).classList.remove('correct')
+  document.querySelector(`#op${id}`).classList.add('correct')
 }
-function removeCorrect (id) {
-  document.querySelector(`#op${id}`).classList.remove('correct')
+function removeCorrect(id) {
+  const eli = document.querySelector(`#op${id}`)
+  if (eli.classList.contains('correct')) {
+    eli.classList.remove('correct')
+  }
 }
-// detect click from option div
-// function userInputOption(e) {
-//   return e.target.id;
-// }
 
-// start and stop class adding and changing btn text
+// game start, btn functionality change from start stop, stop btn click invoke gameOver()  
+function btnChange() {
+  if (!btn.classList.contains("stop")) {
+    btn.classList.add('stop')
+    btnText.textContent = 'Stop'
+    intervalClear = setInterval(gamePlay, speed)
+  } else {
+    gameOver()
+  }
+}
 
-function startStop () {}
-// event listeners
+// reset btn to star, score output, game speed, 
 
-// detecting user input
+function totalReset() {
+  // restore btn to start
+  btn.classList.remove('stop')
+  btnText.textContent = 'Start'
+  // reset score to initial for next game
+  score = 0
+  // reset score outpu for next game
+  scoreSpan.textContent = score
+  // reset speed for next game
+  speed = 3000
+  play = false
+}
 
-function evaluate (circle) {
-  if (`op${id}` === circle.id) {
+
+// evaluate user input againes game choose
+
+function evaluate (userChooseId, userChooseWrong) {
+  if (`op${id}` === userChooseId) {
     if (scoreUpdate) {
       score++
       scoreSpan.textContent = score
       scoreUpdate = false
+      addCorrect(id)
     }
-  } else if (circle.classList.contains('option')) {
-    console.log('game Over')
+  } else if (userChooseWrong && play) {
+    gameOver()
   }
 }
 
 function gameReset () {
-  removeActive(id)
+  id ?removeActive(id):''
+  id ?removeCorrect(id):''
   id = 0
   // count miss
   if (scoreUpdate) miss += 1
-  console.log(miss)
   scoreUpdate = true
 }
 
 function gamePlay () {
   gameInput()
-  option.forEach((item, index) =>
-    item.addEventListener('click', (e) => {
-      evaluate(e.target)
-    })
-  )
-  setTimeout(gameReset, t-10)
+  timeClear = setTimeout(gameReset, speed - 10)
+  speed *=0.75
+  if (miss >= 5) {
+    gameOver()
+  }
 }
-setInterval(gamePlay, t)
+
+// game over
+function gameOver() {
+  clearTimeout(timeClear)
+  clearInterval(intervalClear)
+  // callModal()
+  play = false
+  gameReset()
+  console.log('Game over');
+  totalReset()
+}
+
+// listen user click and and evaluate the inpute
+option.forEach((item, index) =>
+    item.addEventListener('click', (e) => {
+      const userChooseId = e.target.id
+      const userChooseWrong = e.target.classList.contains('option')
+      evaluate(userChooseId, userChooseWrong)
+    })
+)
+ 
+btn.addEventListener('click', btnChange)
+
 // setInterval(gamePlay, t)

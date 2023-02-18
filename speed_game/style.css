@@ -56,5 +56,7 @@ h1 {
   background-color: red;
 }
 .correct{
-  border: 0.5rem solid greenyellow;
+  /* border: 0.5rem solid greenyellow;
+  box-shadow: 3rem greenyellow; */
+  background-color: greenyellow;
 }
