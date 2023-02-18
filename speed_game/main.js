@@ -18,16 +18,18 @@
 
 const btn = document.querySelector('#btn')
 const option = document.querySelectorAll('.option')
-const scoreUpdate = document.querySelector('#scoreUpdate')
+const scoreSpan = document.querySelector('#scoreUpdate')
 
 // GLOBAL variables
 
 let lastNum = 0 //global veriable for randGenerator
-let id //global veriable for game generated id
+let id = 0 //global veriable for game generated id
 let score = 0
-let userId = 0
-let t = 3000
+let miss = 0;
+let scoreUpdate = true
+const t = 3000
 const play = true
+
 
 //random number generator
 function randGenerator () {
@@ -39,7 +41,7 @@ function randGenerator () {
   return randNum
 }
 // game input, adding and removing active class to choose
-function game () {
+function gameInput () {
   id = randGenerator()
   addActive(id)
 }
@@ -49,10 +51,10 @@ function addActive (id) {
 function removeActive (id) {
   document.querySelector(`#op${id}`).classList.remove('active')
 }
-function addCorrect(id) {
+function addCorrect (id) {
   document.querySelector(`#op${id}`).classList.remove('correct')
 }
-function removeCorrect(id) {
+function removeCorrect (id) {
   document.querySelector(`#op${id}`).classList.remove('correct')
 }
 // detect click from option div
@@ -67,29 +69,35 @@ function startStop () {}
 
 // detecting user input
 
-option.forEach((item, index) =>
-  item.addEventListener('click', () => {
-    userId = index + 1
-  })
-)
-
-function evaluate () {
-  if (id === userId) {
-    score++
-    scoreUpdate.textContent = score
+function evaluate (circle) {
+  if (`op${id}` === circle.id) {
+    if (scoreUpdate) {
+      score++
+      scoreSpan.textContent = score
+      scoreUpdate = false
+    }
+  } else if (circle.classList.contains('option')) {
+    console.log('game Over')
   }
-  removeActive(id)
-  id = 0
-  userId = 0
-  t -= 500
 }
-game()
 
 function gameReset () {
-  evaluate()
-  game()
+  removeActive(id)
+  id = 0
+  // count miss
+  if (scoreUpdate) miss += 1
+  console.log(miss)
+  scoreUpdate = true
 }
 
-let inter = setInterval(gameReset, t)
-
+function gamePlay () {
+  gameInput()
+  option.forEach((item, index) =>
+    item.addEventListener('click', (e) => {
+      evaluate(e.target)
+    })
+  )
+  setTimeout(gameReset, t-10)
+}
+setInterval(gamePlay, t)
 // setInterval(gamePlay, t)
