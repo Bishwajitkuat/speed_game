@@ -53,7 +53,9 @@ h1 {
   background-color: red;
 }
 .active {
-  background-color: red;
+  background: url('strawberry.jpg');
+  background-size: cover;
+  background-position: center;
 }
 .correct{
   /* border: 0.5rem solid greenyellow;
