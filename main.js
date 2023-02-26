@@ -20,6 +20,17 @@ const btn = document.querySelector('#btn')
 const btnText = document.querySelector('#btnText')
 const option = document.querySelectorAll('.option')
 const scoreSpan = document.querySelector('#scoreUpdate')
+const btn_close_module = document.querySelector('#btn_close_module')
+const gameEndModal = document.querySelector('.game_end')
+const endScoreId = document.querySelector('#end_score_id')
+const singleOrNot = document.querySelector('#singleOrNot')
+const endTextRecomendation = document.querySelector('.end_text_recomendation')
+const instractionDiv = document.querySelector('.instraction')
+const difficultyDiv = document.querySelector('.difficulty')
+const diffForm = document.querySelector('form')
+const nav = document.querySelector('nav')
+const btnCloseIns = document.querySelector('#btnCloseIns')
+const btnClosedif = document.querySelector('#btnClosedif')
 
 // GLOBAL variables
 
@@ -32,9 +43,21 @@ let speed = 3000        // initial interval, reduce in per cycle
 let timeClear          // global, reference to clear setTimeout() 
 let intervalClear      // global, reference to clear setInterval()
 let play = false
+let msDeductBy = 100
 
+//setting the difficulty lebel
+diffForm.addEventListener('change', setDifficulty)
 
-
+// difficulty setter
+function setDifficulty(e) {
+  if (e.target.id === 'easy') {
+    msDeductBy = 100
+  } else if (e.target.id === 'normal') {
+    msDeductBy = 200
+  }   if (e.target.id === 'hard') {
+    msDeductBy = 300
+  }
+}
 
 //random number generator
 function randGenerator () {
@@ -80,6 +103,9 @@ function btnChange() {
     btn.classList.add('stop')
     btnText.textContent = 'Stop'
     intervalClear = setInterval(gamePlay, speed)
+    // if instraction and setting are displaied but start btn pressed, then disply class will be removed will be removed
+    instractionDiv.classList.remove('display')
+    difficultyDiv.classList.remove('display')
   } else {
     gameOver()
   }
@@ -98,6 +124,7 @@ function totalReset() {
   // reset speed for next game
   speed = 3000
   play = false
+  gameEndModal.style.visibility = 'hidden'
 }
 
 
@@ -106,7 +133,10 @@ function totalReset() {
 function evaluate (userChooseId, userChooseWrong) {
   if (`op${id}` === userChooseId) {
     if (scoreUpdate) {
-      score++
+      // if (score > 1) {
+      //   score +=2
+      // } else score ++
+      score +=10
       scoreSpan.textContent = score
       scoreUpdate = false
       addCorrect(id)
@@ -128,21 +158,37 @@ function gameReset () {
 function gamePlay () {
   gameInput()
   timeClear = setTimeout(gameReset, speed - 10)
-  speed *=0.75
+  speed -=msDeductBy
   if (miss >= 5) {
     gameOver()
   }
+}
+
+function callModal() {
+  endScoreId.textContent = `${score}`
+  const singleOrNotText = score >1 ? 'carrots' : 'carrot'
+  singleOrNot.textContent = `${singleOrNotText}`
+  let text = ''
+  if (score < 50) {
+    text = 'You are good! Better next time! I have food for only 2 days.'
+  } else if (score < 100) {
+    text = 'You are greet! More carrot, next time! I have food for 4 days.'
+  } else if (score < 150) {
+    text = 'Excellent! You are awsome! I have food for one week.'
+  } else {
+    text = 'Excellent! You are awsome! I have food for more than one week.'
+  }
+  endTextRecomendation.textContent = text
+  gameEndModal.style.visibility = 'visible'
 }
 
 // game over
 function gameOver() {
   clearTimeout(timeClear)
   clearInterval(intervalClear)
-  // callModal()
+  callModal()
   play = false
   gameReset()
-  console.log('Game over');
-  totalReset()
 }
 
 // listen user click and and evaluate the inpute
@@ -155,5 +201,28 @@ option.forEach((item, index) =>
 )
  
 btn.addEventListener('click', btnChange)
+btn_close_module.addEventListener('click', totalReset)
 
-// setInterval(gamePlay, t)
+// info and setting btn and info and settings div display
+
+nav.addEventListener('click', (e) => {
+    if (!play) {
+    const btnNav = e.target.closest('.btn_nav')
+      if (btnNav.id === 'info') {
+        instractionDiv.classList.toggle('display')
+   
+      } else if (btnNav.id === 'settings') {
+        difficultyDiv.classList.toggle('display')
+    }
+  }
+  })
+ // removing display class from instraction div by btnClose
+btnCloseIns.addEventListener('click', () => {
+  instractionDiv.classList.remove('display')
+ })
+
+ // removing display class from difficulty div by btnClose
+
+btnClosedif.addEventListener('click', () => {
+  difficultyDiv.classList.remove('display')
+ })

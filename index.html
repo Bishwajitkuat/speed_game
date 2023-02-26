@@ -8,7 +8,36 @@
     <title>Speed Game</title>
   </head>
   <body>
+    <nav>
+      <button class="btn_nav" id="info" data-target="instractionDiv"><img src="info.svg" alt=""></button>
+      <button class="btn_nav" id="settings" data-target="difficultyDiv"><img src="settings.svg" alt=""></button>
+    </nav>
+    <div class="instraction">
+      <img class="imgRabbit" src="rabbit.jpg" alt="rabit">
+      <p>Could you please collect me some carrots! I can not collerct myself because of the fence.</p>
+      <button class="closeBtn" id="btnCloseIns">X</button>
+    </div>
+    <div class="difficulty">
+      <h3>Select difficulty lever</h3>
+      <form>
+        <div>
+          <input type="radio" name="diffi" id="easy">
+        <label for="easy">Easy</label>
+        </div>
+        <div>
+          <input type="radio" name="diffi" id="normal">
+        <label for="normal">Normal</label>
+        </div>
+        <div>
+          <input type="radio" name="diffi" id="hard">
+        <label for="hard">Hard</label>
+        </div>
+      </form>
+      <button class="closeBtn" id="btnClosedif">X</button>
+    </div>
+    
     <main>
+      <div class="overlay"></div>
       <h1>Speed Game</h1>
       <p class="socre_p" id="score">
         Your score: <span id="scoreUpdate">0</span>
@@ -23,6 +52,19 @@
         <span id="btnText">Start</span>
       </button>
     </main>
+    <div class="game_end">
+        <div class="end_result">
+          <button id="btn_close_module">X</button>
+          <div>
+            <img class="end_img" src="carrot.jpg" alt="">
+          <p class="end_text end_text_score">You have picked <span id="end_score_id">00</span> <span id="singleOrNot">cattor</span></p>
+          </div>
+         <div>
+          <img class="end_img_rabbit" src="rabbit.jpg" alt="">
+          <p class="end_text end_text_recomendation">You can do better!</p>
+         </div>
+        </div>
+    </div>
     <script src="main.js"></script>
   </body>
 </html>
