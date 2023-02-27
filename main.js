@@ -17,6 +17,7 @@ const btnCloseIns = document.querySelector('#btnCloseIns')
 const btnClosedif = document.querySelector('#btnClosedif')
 const hideDiv = document.querySelectorAll('.hide')
 const speedLevel = document.querySelector('#speed_level')
+const clickSound = new Audio('audio//click.mp3')
 
 // GLOBAL variables
 let lastNum = 0            //global veriable for randGenerator
@@ -187,4 +188,8 @@ btnCloseIns.addEventListener('click', () => {
  // removing display class from difficulty div by btnClose
 btnClosedif.addEventListener('click', () => {
   difficultyDiv.classList.remove('display')
- })
+})
+// all button click will play sounds
+document.querySelectorAll('button').forEach(item => {
+  item.addEventListener('click', () => clickSound.play())
+})
