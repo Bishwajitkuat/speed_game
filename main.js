@@ -1,20 +1,4 @@
-/* eslint-disable spaced-comment */
 'use strict'
-
-//functions
-// randdomNumber
-// startGame
-// clickCercle
-// pickNew
-// enableCircles
-// resetGames
-
-// veriable
-// score
-// Timer
-// active
-// pace
-// rounds
 
 const btn = document.querySelector('#btn')
 const btnText = document.querySelector('#btnText')
@@ -39,11 +23,11 @@ let id = 0                //global veriable for game generated id
 let score = 0            //global, total score by user
 let miss = 0           // global, total miss by user 
 let scoreUpdate = true  //global, check only one click is registered for correct answer 
-let speed = 3000        // initial interval, reduce in per cycle
+let speed = 1000        // initial interval, reduce in per cycle
 let timeClear          // global, reference to clear setTimeout() 
 let intervalClear      // global, reference to clear setInterval()
 let play = false
-let msDeductBy = 100
+let msDeductBy = 5
 
 //setting the difficulty lebel
 diffForm.addEventListener('change', setDifficulty)
@@ -51,11 +35,11 @@ diffForm.addEventListener('change', setDifficulty)
 // difficulty setter
 function setDifficulty(e) {
   if (e.target.id === 'easy') {
-    msDeductBy = 100
+    msDeductBy = 5
   } else if (e.target.id === 'normal') {
-    msDeductBy = 200
+    msDeductBy = 10
   }   if (e.target.id === 'hard') {
-    msDeductBy = 300
+    msDeductBy = 15
   }
 }
 
@@ -122,7 +106,7 @@ function totalReset() {
   // reset score outpu for next game
   scoreSpan.textContent = score
   // reset speed for next game
-  speed = 3000
+  speed = 1000
   play = false
   gameEndModal.style.visibility = 'hidden'
 }
@@ -133,9 +117,6 @@ function totalReset() {
 function evaluate (userChooseId, userChooseWrong) {
   if (`op${id}` === userChooseId) {
     if (scoreUpdate) {
-      // if (score > 1) {
-      //   score +=2
-      // } else score ++
       score +=10
       scoreSpan.textContent = score
       scoreUpdate = false
@@ -155,9 +136,10 @@ function gameReset () {
   scoreUpdate = true
 }
 
-function gamePlay () {
+function gamePlay() {
+  gameReset()
   gameInput()
-  timeClear = setTimeout(gameReset, speed - 10)
+  timeClear = setTimeout(gamePlay, speed)
   speed -=msDeductBy
   if (miss >= 5) {
     gameOver()

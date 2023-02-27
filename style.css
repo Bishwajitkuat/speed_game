@@ -5,7 +5,7 @@
   text-align: justify;
 }
 body {
-  background: url('bgcarrot.jpg');
+  background: url('img/bgcarrot.jpg');
   background-position: center;
   background-size: cover;
   background-repeat:repeat;
@@ -91,7 +91,7 @@ button{
   background-color: red;
 }
 .active {
-  background: url('carrot.jpg');
+  background: url('img/carrot.jpg');
   background-size: cover;
   background-position: center;
 }
