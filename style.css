@@ -2,43 +2,56 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  text-align: justify;
 }
 body {
+  font-family: sans-serif;
+  max-width: 700px;
+  min-width: 360px;
+  margin: 0 auto;
+}
+main {
+  min-height: min-content;
+  text-align: center;
+  line-height: 1.5;
   background: url('img/bgcarrot.jpg');
   background-position: center;
   background-size: cover;
   background-repeat:repeat;
-  font-family: sans-serif;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  
+  position: relative;
 }
 nav{
-  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+  
 }
 .btn_nav{
   padding: 1rem;
   border-radius: 0.5rem;
   border: none;
+  box-shadow: none;
+  background-color: rgba(172, 255, 47, 0.788);
+ 
 }
 
-main {
-  margin: 0 auto;
-  width: 50vw;
-  /* height: 50vh; */
+.play_ground {
   border-radius: 0.5rem;
   padding: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
   color: white;
   position: relative;
+  z-index: 0;
 }
 .overlay{
   width: 100%;
@@ -52,12 +65,12 @@ main {
 }
 
 h1 {
-  font-size: 5rem;
+  font-size: 4rem;
 }
 button{
   text-align: center;
 }
-.socre_p {
+.play_ground_p {
   font-size: 2rem;
 }
 .option_div {
@@ -66,9 +79,9 @@ button{
   gap: 1rem;
 }
 .option {
-  border: 0.5rem solid white;
-  height: 7rem;
-  width: 7rem;
+  border: 0.2rem solid white;
+  height: 6rem;
+  width: 6rem;
   border-radius: 50%;
   display: flex;
   flex-wrap: wrap;
@@ -101,19 +114,21 @@ button{
 .game_end{
   visibility: hidden;
   position: absolute;
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   background-color: black;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 0.5rem;
 }
 .end_result{
   padding: 2rem;
   background-color: whitesmoke;
   height: min-content;
-  width: 60vw;
+  width: 60%;
+  min-height: min-content;
   border-radius: 0.5rem;
   color: black;
   display: flex;
@@ -126,6 +141,11 @@ button{
   grid-template-columns: 8rem 1fr;
   align-items: center;
   justify-content: start;
+}
+.game_over_txt{
+  align-self: center;
+  color: red;
+  font-size: 2.5rem;
 }
 
 #btn_close_module{
@@ -166,15 +186,20 @@ button{
   align-items: center;
 }
 .imgRabbit{
-  width: 100%;
+  width: 6rem;
+  border-radius: 50%;
 }
 .difficulty{
   display: none;
-  grid-template-columns: 2fr 2fr 1fr ;
+  grid-template-columns: 2fr 2fr 2fr 1fr ;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
   background-color: white;
   border-radius: 0.5rem;
   width: 50vw;
   padding: 2rem;
+  text-align: left;
   
 }
 .closeBtn {

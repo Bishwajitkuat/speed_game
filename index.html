@@ -8,53 +8,58 @@
     <title>Speed Game</title>
   </head>
   <body>
+    <main>
     <nav>
-      <button class="btn_nav" id="info" data-target="instractionDiv"><img src="img/info.svg" alt=""></button>
-      <button class="btn_nav" id="settings" data-target="difficultyDiv"><img src="img/settings.svg" alt=""></button>
+      <button class="btn_nav" id="info" data-target="instraction"><img src="img/info.svg" alt=""></button>
+      <button class="btn_nav" id="settings" data-target="difficulty"><img src="img/settings.svg" alt=""></button>
     </nav>
-    <div class="instraction">
+    <section class="hide instraction">
       <img class="imgRabbit" src="img/rabbit.jpg" alt="rabit">
       <p>Could you please collect me some carrots! I can not collerct myself because of the fence.</p>
       <button class="closeBtn" id="btnCloseIns">X</button>
-    </div>
-    <div class="difficulty">
-      <h3>Select difficulty lever</h3>
+    </section>
+    <section class="hide difficulty">
+      <img class="imgRabbit" src="img/rabbit.jpg" alt="rabit">
+      <h4>Please! select the speed</h4>
       <form>
         <div>
-          <input type="radio" name="diffi" id="easy">
-        <label for="easy">Easy</label>
+          <input type="radio" name="diffi" checked id="slow">
+        <label for="slow">Slow</label>
         </div>
         <div>
-          <input type="radio" name="diffi" id="normal">
-        <label for="normal">Normal</label>
+          <input type="radio" name="diffi" id="medium">
+        <label for="medium">Medium</label>
         </div>
         <div>
-          <input type="radio" name="diffi" id="hard">
-        <label for="hard">Hard</label>
+          <input type="radio" name="diffi" id="fast">
+        <label for="fast">Fast</label>
         </div>
       </form>
       <button class="closeBtn" id="btnClosedif">X</button>
-    </div>
+    </section>
     
-    <main>
+    <section class="play_ground">
       <div class="overlay"></div>
       <h1>Speed Game</h1>
-      <p class="socre_p" id="score">
+      <p class="play_ground_p">Speed: <span id="speed_level">Slow</span></p>
+      <p class="play_ground_p" id="score">
         Your score: <span id="scoreUpdate">0</span>
       </p>
       <div class="option_div">
-        <p class="option" id="op1">1</p>
-        <p class="option" id="op2">2</p>
-        <p class="option" id="op3">3</p>
-        <p class="option" id="op4">4</p>
+        <p class="option" id="op1"></p>
+        <p class="option" id="op2"></p>
+        <p class="option" id="op3"></p>
+        <p class="option" id="op4"></p>
       </div>
       <button id="btn" class="btn start">
         <span id="btnText">Start</span>
       </button>
-    </main>
-    <div class="game_end">
+      
+    </section>
+    <section class="game_end">
         <div class="end_result">
           <button id="btn_close_module">X</button>
+          <h2 class="game_over_txt">Game Over!!!</h2>
           <div>
             <img class="end_img" src="img/carrot.jpg" alt="">
           <p class="end_text end_text_score">You have picked <span id="end_score_id">00</span> <span id="singleOrNot">cattor</span></p>
@@ -64,7 +69,8 @@
           <p class="end_text end_text_recomendation">You can do better!</p>
          </div>
         </div>
-    </div>
+      </section>
     <script src="main.js"></script>
+  </main>
   </body>
 </html>
