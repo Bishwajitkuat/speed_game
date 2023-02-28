@@ -6,7 +6,7 @@
 body {
   font-family: sans-serif;
   font-size: 1.3rem;
-  max-width: 700px;
+  max-width: 1000px;
   min-width: 360px;
   margin: 0 auto;
 }
@@ -223,4 +223,26 @@ button{
 }
 .display{
   display: grid;
+}
+
+@media screen and (max-width:600px) {
+  main{
+    margin: 0;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .play_ground, .instraction, .difficulty, .end_result {
+    width: 98vw;
+  }
+  .instraction, .difficulty{
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+  .closeBtn{
+    margin: 0;
+  }
+  .imgRabbit{
+    width: 4rem;
+  }
 }

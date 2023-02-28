@@ -146,7 +146,9 @@ function callModal() {
   const singleOrNotText = score >1 ? 'carrots' : 'carrot'
   singleOrNot.textContent = `${singleOrNotText}`
   let text = ''
-  if (score < 50) {
+  if (score < 11) {
+    text = 'You can do better than this! Please try again!'
+  } else if (score < 50) {
     text = 'You are good! Better next time! I have food for only 2 days.'
   } else if (score < 100) {
     text = 'You are greet! More carrot, next time! I have food for 4 days.'
