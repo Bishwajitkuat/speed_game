@@ -108,7 +108,7 @@ button{
   background-color: red;
 }
 .active {
-  background: url('img/carrot.jpg');
+  background: url('img/carrot.svg');
   background-size: cover;
   background-position: center;
 }
