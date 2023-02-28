@@ -18,6 +18,9 @@ const btnClosedif = document.querySelector('#btnClosedif')
 const hideDiv = document.querySelectorAll('.hide')
 const speedLevel = document.querySelector('#speed_level')
 const clickSound = new Audio('audio//click.mp3')
+const correctSound = new Audio('audio//correct.mp3')
+const optionSound = new Audio('audio//option.mp3')
+const gameEndSound = new Audio('audio//gameEnd.wav')
 
 // GLOBAL variables
 let lastNum = 0            //global veriable for randGenerator
@@ -84,6 +87,7 @@ function gamePlay() {
   roundReset()
   play = true
   id = randGenerator()
+  // optionSound.play()
   addActive(id)
   timeClear = setTimeout(gamePlay, speed)
   speed -= msDeductBy
@@ -118,6 +122,7 @@ option.forEach ( item =>
 // evaluate user input againest game choose
 function evaluate(userInputId) {
   if (`op${id}` === userInputId) {
+    correctSound.play()
     if (scoreUpdate) {
       score +=10
       scoreSpan.textContent = score
@@ -130,6 +135,7 @@ function evaluate(userInputId) {
 // game over
 function gameOver() {
   clearTimeout(timeClear)
+  gameEndSound.play()
   callModal()
   play = false
   roundReset()
