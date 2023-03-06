@@ -14,10 +14,10 @@ main {
   min-height: min-content;
   text-align: center;
   line-height: 1.5;
-  background: url('img/bgcarrot.jpg');
+  background: url("img/bgcarrot.jpg");
   background-position: center;
   background-size: cover;
-  background-repeat:repeat;
+  background-repeat: repeat;
   padding: 2rem;
   border-radius: 0.5rem;
   margin-top: 2rem;
@@ -27,20 +27,17 @@ main {
   justify-content: center;
   gap: 1rem;
   position: relative;
-  
 }
-nav{
+nav {
   display: flex;
   gap: 2rem;
-  
 }
-.btn_nav{
+.btn_nav {
   padding: 1rem;
   border-radius: 0.5rem;
   border: none;
   box-shadow: none;
   background-color: rgba(172, 255, 47, 0.788);
- 
 }
 
 .play_ground {
@@ -56,7 +53,7 @@ nav{
   position: relative;
   z-index: 0;
 }
-.overlay{
+.overlay {
   width: 100%;
   height: 100%;
   background-color: black;
@@ -69,10 +66,10 @@ nav{
 
 h1 {
   font-size: 4rem;
-  font-family: 'Faster One', cursive;
+  font-family: "Faster One", cursive;
   color: red;
 }
-button{
+button {
   text-align: center;
 }
 .play_ground_p {
@@ -109,14 +106,14 @@ button{
   background-color: red;
 }
 .active {
-  background: url('img/carrot.svg');
+  background: url("img/carrot.svg");
   background-size: cover;
   background-position: center;
 }
-.correct{
+.correct {
   border: 0.5rem solid greenyellow;
 }
-.game_end{
+.game_end {
   visibility: hidden;
   position: absolute;
   height: 100%;
@@ -128,7 +125,7 @@ button{
   align-items: center;
   border-radius: 0.5rem;
 }
-.end_result{
+.end_result {
   padding: 2rem;
   background-color: whitesmoke;
   height: min-content;
@@ -147,14 +144,14 @@ button{
   align-items: center;
   justify-content: start;
 }
-.game_over_txt{
+.game_over_txt {
   align-self: center;
   color: red;
   font-size: 2.5rem;
-  font-family: 'Faster One', cursive;
+  font-family: "Faster One", cursive;
 }
 
-#btn_close_module{
+#btn_close_module {
   background-color: gray;
   height: 2rem;
   width: 2rem;
@@ -163,25 +160,24 @@ button{
   font-size: 1.5rem;
   opacity: 0.8;
   align-self: flex-end;
-
 }
-.end_img{
+.end_img {
   width: 6rem;
   border-radius: 50%;
 }
-.end_img_rabbit{
+.end_img_rabbit {
   width: 6rem;
   border-radius: 50%;
 }
-.end_text{
+.end_text {
   font-family: sans-serif;
   font-size: 1.2rem;
 }
-#end_score_id{
+#end_score_id {
   font-size: 2rem;
   color: red;
 }
-.instraction{
+.instraction {
   display: none;
   grid-template-columns: 1fr 3fr 1fr;
   background-color: rgba(255, 255, 255, 0.7);
@@ -191,13 +187,13 @@ button{
   gap: 1rem;
   align-items: center;
 }
-.imgRabbit{
+.imgRabbit {
   width: 6rem;
   border-radius: 50%;
 }
-.difficulty{
+.difficulty {
   display: none;
-  grid-template-columns: 2fr 2fr 2fr 1fr ;
+  grid-template-columns: 2fr 2fr 2fr 1fr;
   justify-content: center;
   align-items: center;
   gap: 1rem;
@@ -206,7 +202,6 @@ button{
   width: 80%;
   padding: 2rem;
   text-align: left;
-  
 }
 .closeBtn {
   background-color: gray;
@@ -216,33 +211,37 @@ button{
   border: none;
   font-size: 1rem;
   opacity: 0.8;
-  align-self:start;
+  align-self: start;
   justify-self: end;
   margin-top: -1.5rem;
   margin-right: -1.5rem;
 }
-.display{
+.display {
   display: grid;
 }
 
-@media screen and (max-width:600px) {
-  main{
+@media screen and (max-width: 600px) {
+  main {
     margin: 0;
   }
   h1 {
     font-size: 2rem;
   }
-  .play_ground, .instraction, .difficulty, .end_result {
+  .play_ground,
+  .instraction,
+  .difficulty,
+  .end_result {
     width: 98vw;
   }
-  .instraction, .difficulty{
+  .instraction,
+  .difficulty {
     gap: 0.25rem;
     padding: 0.5rem;
   }
-  .closeBtn{
+  .closeBtn {
     margin: 0;
   }
-  .imgRabbit{
+  .imgRabbit {
     width: 4rem;
   }
 }

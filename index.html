@@ -4,76 +4,88 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Faster+One&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Speed Game</title>
   </head>
   <body>
     <main>
-    <nav>
-      <button class="btn_nav" id="info" data-target="instraction"><img src="img/info.svg" alt=""></button>
-      <button class="btn_nav" id="settings" data-target="difficulty"><img src="img/settings.svg" alt=""></button>
-    </nav>
-    <section class="hide instraction">
-      <img class="imgRabbit" src="img/rabbit.jpg" alt="rabit">
-      <p>Could you please collect me some carrots! I can not collerct myself because of the fence.</p>
-      <button class="closeBtn" id="btnCloseIns">X</button>
-    </section>
-    <section class="hide difficulty">
-      <img class="imgRabbit" src="img/rabbit.jpg" alt="rabit">
-      <h4>Please! select the speed</h4>
-      <form>
-        <div>
-          <input type="radio" name="diffi" checked id="slow">
-        <label for="slow">Slow</label>
+      <nav>
+        <button class="btn_nav" id="info" data-target="instraction">
+          <img src="img/info.svg" alt="" />
+        </button>
+        <button class="btn_nav" id="settings" data-target="difficulty">
+          <img src="img/settings.svg" alt="" />
+        </button>
+      </nav>
+      <section class="hide instraction">
+        <img class="imgRabbit" src="img/rabbit.jpg" alt="rabit" />
+        <p>
+          Could you please collect me some carrots! I can not collerct myself
+          because of the fence.
+        </p>
+        <button class="closeBtn" id="btnCloseIns">X</button>
+      </section>
+      <section class="hide difficulty">
+        <img class="imgRabbit" src="img/rabbit.jpg" alt="rabit" />
+        <h4>Please! select the speed</h4>
+        <form>
+          <div>
+            <input type="radio" name="diffi" checked id="slow" />
+            <label for="slow">Slow</label>
+          </div>
+          <div>
+            <input type="radio" name="diffi" id="medium" />
+            <label for="medium">Medium</label>
+          </div>
+          <div>
+            <input type="radio" name="diffi" id="fast" />
+            <label for="fast">Fast</label>
+          </div>
+        </form>
+        <button class="closeBtn" id="btnClosedif">X</button>
+      </section>
+
+      <section class="play_ground">
+        <div class="overlay"></div>
+        <h1>Speed Game</h1>
+        <p class="play_ground_p">Speed: <span id="speed_level">Slow</span></p>
+        <p class="play_ground_p" id="score">
+          Your score: <span id="scoreUpdate">0</span>
+        </p>
+        <div class="option_div">
+          <p class="option" id="op1"></p>
+          <p class="option" id="op2"></p>
+          <p class="option" id="op3"></p>
+          <p class="option" id="op4"></p>
         </div>
-        <div>
-          <input type="radio" name="diffi" id="medium">
-        <label for="medium">Medium</label>
-        </div>
-        <div>
-          <input type="radio" name="diffi" id="fast">
-        <label for="fast">Fast</label>
-        </div>
-      </form>
-      <button class="closeBtn" id="btnClosedif">X</button>
-    </section>
-    
-    <section class="play_ground">
-      <div class="overlay"></div>
-      <h1>Speed Game</h1>
-      <p class="play_ground_p">Speed: <span id="speed_level">Slow</span></p>
-      <p class="play_ground_p" id="score">
-        Your score: <span id="scoreUpdate">0</span>
-      </p>
-      <div class="option_div">
-        <p class="option" id="op1"></p>
-        <p class="option" id="op2"></p>
-        <p class="option" id="op3"></p>
-        <p class="option" id="op4"></p>
-      </div>
-      <button id="btn" class="btn start">
-        <span id="btnText">Start</span>
-      </button>
-      
-    </section>
-    <section class="game_end">
+        <button id="btn" class="btn start">
+          <span id="btnText">Start</span>
+        </button>
+      </section>
+      <section class="game_end">
         <div class="end_result">
           <button id="btn_close_module">X</button>
           <h2 class="game_over_txt">Game Over</h2>
           <div>
-            <img class="end_img" src="img/carrot.svg" alt="">
-          <p class="end_text end_text_score">You have picked <span id="end_score_id">00</span> <span id="singleOrNot">cattor</span></p>
+            <img class="end_img" src="img/carrot.svg" alt="" />
+            <p class="end_text end_text_score">
+              You have picked <span id="end_score_id">00</span>
+              <span id="singleOrNot">cattor</span>
+            </p>
           </div>
-         <div>
-          <img class="end_img_rabbit" src="img/rabbit.jpg" alt="">
-          <p class="end_text end_text_recomendation">You can do better!</p>
-         </div>
+          <div>
+            <img class="end_img_rabbit" src="img/rabbit.jpg" alt="" />
+            <p class="end_text end_text_recomendation">You can do better!</p>
+          </div>
         </div>
       </section>
-    <script src="main.js"></script>
-  </main>
+      <script src="main.js"></script>
+    </main>
   </body>
 </html>
